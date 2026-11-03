@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jurnal Shalat | Ruang Ibadah</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --green:#245c48;
+  --green2:#36785b;
+  --mint:#e6f1e8;
+  --cream:#fbf8f0;
+  --text:#24352c;
+  --muted:#819087;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Nunito',sans-serif;
+  background:#f2f6f1;
+  color:var(--text);
+}
+
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+
+.app{
+  display:grid;
+  grid-template-columns:245px 1fr;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  background:var(--cream);
+  padding:28px 18px;
+  border-right:1px solid #e5eae3;
+  display:flex;
+  flex-direction:column;
+}
+
+.brand{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.brand-icon{
+  font-size:48px;
+  background:var(--mint);
+  width:85px;
+  height:85px;
+  border-radius:28px;
+  display:grid;
+  place-items:center;
+  margin:auto;
+}
+
+.brand h2{
+  font-family:'Playfair Display',serif;
+  margin:12px 0 5px;
+  color:var(--green);
+}
+
+.brand p{
+  color:var(--muted);
+  font-size:13px;
+  margin:0;
+}
+
+.nav{
+  display:grid;
+  gap:10px;
+}
+
+.nav button{
+  border:0;
+  padding:14px;
+  border-radius:13px;
+  background:transparent;
+  text-align:left;
+  color:#52665a;
+  font-weight:700;
+}
+
+.nav button.active,
+.nav button:hover{
+  background:var(--green);
+  color:white;
+}
+
+.sidebar-quote{
+  margin-top:auto;
+  background:#f3ecd9;
+  padding:20px;
+  border-radius:18px;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  color:#6e7957;
+}
+
+/* MAIN */
+main{
+  padding:30px;
+  max-width:1600px;
+  width:100%;
+  margin:auto;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  margin:0;
+  color:var(--green);
+}
+
+.topbar p{
+  color:var(--muted);
+  margin:7px 0 0;
+}
+
+.date-pill{
+  background:white;
+  padding:12px 18px;
+  border-radius:14px;
+  box-shadow:0 4px 18px #dce5dc55;
+  font-weight:700;
+}
+
+/* CARDS */
+.card{
+  background:white;
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 5px 24px #203f2810;
+  border:1px solid #e9eee8;
+}
+
+.card-title{
+  font-size:19px;
+  font-weight:800;
+  margin:0 0 20px;
+}
+
+.hero{
+  background:linear-gradient(120deg,#174c3b,#3b8061);
+  color:white;
+  padding:30px;
+  border-radius:24px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"☾";
+  position:absolute;
+  right:35px;
+  top:10px;
+  font-size:100px;
+  color:#ffffff20;
+}
+
+.hero h2{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  margin:10px 0;
+}
+
+.hero p{color:#d5eadc}
+
+.countdown{
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin:15px 0;
+}
+
+.hero button{
+  background:white;
+  color:var(--green);
+  border:0;
+  padding:11px 18px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 310px;
+  gap:22px;
+}
+
+.left-column,.right-column{
+  display:grid;
+  align-content:start;
+  gap:22px;
+}
+
+.progress-box{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.circle{
+  width:135px;
+  height:135px;
+  border-radius:50%;
+  background:conic-gradient(#268354 var(--progress),#e5eee5 0);
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.circle:before{
+  content:"";
+  position:absolute;
+  width:105px;
+  height:105px;
+  background:white;
+  border-radius:50%;
+}
+
+.circle-content{
+  position:relative;
+  text-align:center;
+}
+
+.circle-content strong{
+  font-size:25px;
+  display:block;
+  color:var(--green);
+}
+
+.circle-content small{color:var(--muted)}
+
+.prayer-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+
+.prayer{
+  text-align:center;
+  background:#f7faf6;
+  padding:15px 5px;
+  border-radius:15px;
+  border:1px solid #e8eee6;
+}
+
+.prayer .emoji{font-size:26px}
+
+.prayer h4{
+  margin:8px 0;
+  font-size:14px;
+}
+
+.prayer .time{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.prayer button{
+  margin-top:12px;
+  border:1px solid #cbd9ce;
+  border-radius:50%;
+  width:32px;
+  height:32px;
+  background:white;
+  color:#78917f;
+  font-size:17px;
+}
+
+.prayer.done{
+  background:#e8f5eb;
+  border-color:#b7d9c0;
+}
+
+.prayer.done button{
+  background:#25804f;
+  color:white;
+  border-color:#25804f;
+}
+
+/* JOURNAL */
+textarea{
+  width:100%;
+  min-height:115px;
+  resize:vertical;
+  padding:15px;
+  border:1px solid #dce5dc;
+  border-radius:14px;
+  outline:none;
+  background:#fcfdfb;
+}
+
+textarea:focus,input:focus{
+  border-color:#5b9b75;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  font-weight:800;
+  background:var(--green);
+  color:white;
+}
+
+.btn:hover{background:var(--green2)}
+
+.btn-light{
+  background:#eaf3eb;
+  color:var(--green);
+}
+
+.journal-item{
+  border-top:1px solid #edf0eb;
+  padding:16px 0;
+}
+
+.journal-item small{color:var(--muted)}
+.journal-item p{margin:8px 0;white-space:pre-wrap}
+
+.journal-item button{
+  border:0;
+  background:#fff0ef;
+  color:#c55;
+  padding:7px 12px;
+  border-radius:9px;
+}
+
+/* REMINDER */
+.reminder-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  gap:10px;
+}
+
+.switch{
+  width:48px;
+  height:26px;
+  background:#cbd5cc;
+  border-radius:30px;
+  position:relative;
+  border:0;
+}
+
+.switch:after{
+  content:"";
+  width:20px;
+  height:20px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:3px;
+  left:3px;
+  transition:.2s;
+}
+
+.switch.on{background:#268354}
+.switch.on:after{left:25px}
+
+.schedule-row{
+  display:flex;
+  justify-content:space-between;
+  padding:11px 0;
+  border-bottom:1px solid #edf1ed;
+  font-size:14px;
+}
+
+.schedule-row input{
+  width:85px;
+  border:1px solid #e0e8df;
+  border-radius:8px;
+  padding:5px;
+  text-align:center;
+}
+
+.tip{
+  background:#f8f1dd;
+  border-radius:16px;
+  padding:18px;
+  line-height:1.7;
+}
+
+.tip h3{margin-top:0;color:#927438}
+
+.section{display:none}
+.section.active{display:block}
+
+input[type="date"],input[type="text"]{
+  padding:10px;
+  border:1px solid #dce5dc;
+  border-radius:10px;
+}
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#214e3c;
+  color:white;
+  padding:14px 22px;
+  border-radius:14px;
+  display:none;
+  box-shadow:0 8px 30px #0002;
+  z-index:99;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#9aa69c;
+  font-size:12px;
+}
+
+@media(max-width:1000px){
+  .app{grid-template-columns:1fr}
+  .sidebar{padding:15px}
+  .brand{margin-bottom:15px}
+  .brand-icon{width:55px;height:55px;font-size:30px}
+  .nav{grid-template-columns:repeat(4,1fr)}
+  .nav button{text-align:center;padding:10px 5px;font-size:12px}
+  .sidebar-quote{display:none}
+  main{padding:18px}
+  .dashboard{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  .topbar h1{font-size:24px}
+  .card{padding:17px}
+  .hero{padding:22px}
+  .countdown{font-size:25px}
+  .prayer-grid{grid-template-columns:repeat(3,1fr)}
+  .progress-box{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">🕌</div>
+    <h2>Ruang Ibadah</h2>
+    <p>Langkah kecil menuju istiqamah</p>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showPage('home',this)">🏡 Beranda</button>
+    <button onclick="showPage('journal',this)">📔 Jurnal Saya</button>
+    <button onclick="showPage('settings',this)">⚙️ Pengaturan</button>
+    <button onclick="showPage('about',this)">🌿 Tentang</button>
+  </div>
+
+  <div class="sidebar-quote">
+    <div style="font-size:25px">❝</div>
+    "Shalat adalah cahaya dalam kehidupan."
+    <p style="font-family:Nunito;font-size:12px">Semangat menjaga ibadah ✨</p>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<header class="topbar">
+  <div>
+    <h1>Assalamu'alaikum 🌿</h1>
+    <p>Selamat datang di ruang ibadah pribadimu.</p>
+  </div>
+  <div class="date-pill" id="todayDate">📅 Hari ini</div>
+</header>
+
+<!-- HOME -->
+<section id="home" class="section active">
+
+  <div class="hero">
+    <span>✦ WAKTU SHALAT BERIKUTNYA</span>
+    <h2 id="nextPrayer">Shalat Subuh</h2>
+    <p id="nextTime">04:30</p>
+    <div class="countdown" id="countdown">00:00:00</div>
+    <button onclick="showPage('settings',document.querySelectorAll('.nav button')[2])">
+      ⚙ Atur Jadwal
+    </button>
+  </div>
+
+  <div class="dashboard">
+    <div class="left-column">
+
+      <!-- PROGRESS -->
+      <div class="card">
+        <h3 class="card-title">🌱 Progress Ibadah Hari Ini</h3>
+
+        <div class="progress-box">
+          <div class="circle" id="progressCircle" style="--progress:0%">
+            <div class="circle-content">
+              <strong id="percentage">0%</strong>
+              <small id="fraction">0 / 5</small>
+            </div>
+          </div>
+
+          <div style="flex:1;min-width:180px">
+            <h3 id="progressTitle">Awali hari dengan niat baik!</h3>
+            <p style="color:#829087">Setiap shalat yang ditunaikan adalah langkah menuju kebiasaan baik.</p>
+            <button class="btn btn-light" onclick="resetToday()">↻ Reset Hari Ini</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKLIST -->
+      <div class="card">
+        <h3 class="card-title">🕊️ Checklist Shalat</h3>
+        <div class="prayer-grid" id="prayerGrid"></div>
+      </div>
+
+      <!-- JOURNAL -->
+      <div class="card">
+        <h3 class="card-title">📔 Jurnal Refleksi</h3>
+        <p style="color:#829087">Apa yang kamu rasakan setelah beribadah hari ini?</p>
+        <textarea id="journalInput" placeholder="Alhamdulillah hari ini aku merasa..."></textarea>
+        <br><br>
+        <button class="btn" onclick="saveJournal()">✦ Simpan Catatan</button>
+        <div id="recentJournal" style="margin-top:20px"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+
+      <div class="card">
+        <h3 class="card-title">🔔 Pengingat Shalat</h3>
+
+        <div class="reminder-row">
+          <span>Aktifkan pengingat</span>
+          <button class="switch" id="reminderSwitch" onclick="toggleReminder()"></button>
+        </div>
+
+        <p style="color:#829087;font-size:13px">
+          Pengingat akan mencoba menampilkan notifikasi di browser saat waktu shalat tiba.
+        </p>
+
+        <button class="btn btn-light" onclick="enableNotification()">Izinkan Notifikasi</button>
+
+        <div id="scheduleMini" style="margin-top:18px"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">✨ Motivasi Hari Ini</h3>
+        <div class="tip">
+          <h3>🌼 Pelan-pelan, yang penting konsisten</h3>
+          Jangan menunggu menjadi sempurna untuk memulai kebiasaan baik. Mulailah dari hari ini.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">📊 Ringkasan</h3>
+        <p>Shalat hari ini:</p>
+        <h2 style="color:var(--green)" id="summary">0 dari 5</h2>
+        <p style="color:#829087;font-size:13px">Semoga selalu istiqamah 🤍</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL PAGE -->
+<section id="journal" class="section">
+  <div class="card">
+    <h2 class="card-title">📔 Arsip Jurnal Ibadah</h2>
+    <p style="color:#829087">Semua refleksi yang pernah kamu simpan.</p>
+    <div id="allJournals"></div>
+  </div>
+</section>
+
+<!-- SETTINGS PAGE -->
+<section id="settings" class="section">
+  <div class="card">
+    <h2 class="card-title">⚙️ Pengaturan Waktu Shalat</h2>
+    <p style="color:#829087">Sesuaikan jadwal berdasarkan daerahmu.</p>
+    <div id="scheduleSettings"></div>
+    <br>
+    <button class="btn" onclick="saveSchedule()">💾 Simpan Jadwal</button>
+    <button class="btn btn-light" onclick="defaultSchedule()">Kembalikan Default</button>
+    <br><br>
+    <p style="font-size:13px;color:#829087">
+      Catatan: Jadwal default hanya contoh. Sesuaikan dengan jadwal resmi masjid atau daerahmu.
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about" class="section">
+  <div class="card">
+    <h2 class="card-title">🌿 Tentang Ruang Ibadah</h2>
+    <p>Ruang Ibadah adalah jurnal shalat sederhana untuk membantu membangun kebiasaan ibadah dan refleksi harian.</p>
+    <p>Seluruh data jurnal dan checklist disimpan di browser perangkatmu.</p>
+    <p>Semoga menjadi teman kecil untuk perjalanan menuju istiqamah. 🤍</p>
+  </div>
+</section>
+
+<footer>Ruang Ibadah © 2026 · Dibuat dengan niat baik 🤍</footer>
+
+</main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ================= DATA =================
+
+const prayers = [
+  {name:"Subuh",emoji:"🌅",time:"04:30"},
+  {name:"Dzuhur",emoji:"☀️",time:"12:00"},
+  {name:"Ashar",emoji:"🌤️",time:"15:15"},
+  {name:"Maghrib",emoji:"🌇",time:"18:00"},
+  {name:"Isya",emoji:"🌙",time:"19:15"}
+];
+
+const defaultTimes = ["04:30","12:00","15:15","18:00","19:15"];
+
+let reminderOn = false;
+let prayerStatus = {};
+let journals = [];
+
+// ================= STORAGE =================
+
+function todayKey(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+
+function loadData(){
+  prayerStatus=JSON.parse(localStorage.getItem("ibadah_"+todayKey())||"{}");
+  journals=JSON.parse(localStorage.getItem("ibadah_journals")||"[]");
+  reminderOn=localStorage.getItem("ibadah_reminder")==="true";
+
+  const saved=JSON.parse(localStorage.getItem("ibadah_times")||"null");
+  if(saved) prayers.forEach((p,i)=>p.time=saved[i]);
+}
+
+function storeStatus(){
+  localStorage.setItem("ibadah_"+todayKey(),JSON.stringify(prayerStatus));
+}
+
+function storeJournals(){
+  localStorage.setItem("ibadah_journals",JSON.stringify(journals));
+}
+
+// ================= NAVIGATION =================
+
+function showPage(page,button){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  if(button)button.classList.add("active");
+
+  if(page==="journal")renderAllJournals();
+  if(page==="settings")renderSettings();
+}
+
+// ================= DATE =================
+
+function renderDate(){
+  document.getElementById("todayDate").textContent=
+    "📅 "+new Date().toLocaleDateString("id-ID",{
+      weekday:"long",day:"numeric",month:"long",year:"numeric"
+    });
+}
+
+// ================= CHECKLIST =================
+
+function renderPrayers(){
+  const grid=document.getElementById("prayerGrid");
+  grid.innerHTML="";
+
+  prayers.forEach((p,i)=>{
+    const done=!!prayerStatus[i];
+    const div=document.createElement("div");
+    div.className="prayer "+(done?"done":"");
+
+    div.innerHTML=`
+      <div class="emoji">${p.emoji}</div>
+      <h4>${p.name}</h4>
+      <div class="time">${p.time}</div>
+      <button onclick="togglePrayer(${i})">${done?"✓":"○"}</button>
+    `;
+    grid.appendChild(div);
+  });
+
+  updateProgress();
+}
+
+function togglePrayer(i){
+  prayerStatus[i]=!prayerStatus[i];
+  storeStatus();
+  renderPrayers();
+  renderScheduleMini();
+}
+
+function resetToday(){
+  if(confirm("Reset checklist shalat hari ini?")){
+    prayerStatus={};
+    storeStatus();
+    renderPrayers();
+    showToast("Checklist berhasil direset 🌿");
+  }
+}
+
+function updateProgress(){
+  const count=prayers.filter((p,i)=>prayerStatus[i]).length;
+  const percent=Math.round(count/5*100);
+
+  document.getElementById("percentage").textContent=percent+"%";
+  document.getElementById("fraction").textContent=count+" / 5";
+  document.getElementById("progressCircle").style.setProperty("--progress",percent+"%");
+  document.getElementById("summary").textContent=count+" dari 5";
+
+  document.getElementById("progressTitle").textContent=
+    count===5?"Alhamdulillah, lengkap! 🤍":
+    count===0?"Awali hari dengan niat baik!":"Terus semangat beribadah 🌱";
+}
+
+// ================= COUNTDOWN =================
+
+function updateCountdown(){
+  const now=new Date();
+  let next=null;
+
+  prayers.forEach((p,i)=>{
+    const [h,m]=p.time.split(":").map(Number);
+    const date=new Date();
+    date.setHours(h,m,0,0);
+
+    if(date>now&&!next)next={date,p};
+  });
+
+  if(!next){
+    const [h,m]=prayers[0].time.split(":").map(Number);
+    const date=new Date();
+    date.setDate(date.getDate()+1);
+    date.setHours(h,m,0,0);
+    next={date,p:prayers[0]};
+  }
+
+  document.getElementById("nextPrayer").textContent="Shalat "+next.p.name;
+  document.getElementById("nextTime").textContent="Pukul "+next.p.time;
+
+  const diff=Math.max(0,next.date-now);
+  const hours=Math.floor(diff/3600000);
+  const mins=Math.floor(diff%3600000/60000);
+  const secs=Math.floor(diff%60000/1000);
+
+  document.getElementById("countdown").textContent=
+    [hours,mins,secs].map(n=>String(n).padStart(2,"0")).join(":");
+
+  checkReminder(next.p.name,next.date);
+}
+
+// ================= REMINDER =================
+
+function toggleReminder(){
+  reminderOn=!reminderOn;
+  localStorage.setItem("ibadah_reminder",reminderOn);
+  updateReminderSwitch();
+
+  if(reminderOn){
+    enableNotification();
+  }else{
+    showToast("Pengingat dinonaktifkan");
+  }
+}
+
+function updateReminderSwitch(){
+  document.getElementById("reminderSwitch").classList.toggle("on",reminderOn);
+}
+
+async function enableNotification(){
+  if(!("Notification" in window)){
+    alert("Browser ini belum mendukung notifikasi.");
+    return;
+  }
+
+  const permission=await Notification.requestPermission();
+
+  if(permission==="granted"){
+    reminderOn=true;
+    localStorage.setItem("ibadah_reminder","true");
+    updateReminderSwitch();
+    showToast("Notifikasi berhasil diizinkan 🔔");
+    new Notification("Ruang Ibadah",{body:"Pengingat ibadah telah aktif 🤍"});
+  }else{
+    alert("Izinkan notifikasi melalui pengaturan browser.");
+  }
+}
+
+let notified={};
+
+function checkReminder(name,date){
+  if(!reminderOn||Notification.permission!=="granted")return;
+
+  const diff=date-new Date();
+  const key=todayKey()+name;
+
+  if(diff<=0&&diff>-60000&&!notified[key]){
+    new Notification("Waktu Shalat "+name,{
+      body:"Yuk, persiapkan diri untuk menunaikan shalat 🤍"
+    });
+    notified[key]=true;
+  }
+}
+
+// ================= SCHEDULE =================
+
+function renderScheduleMini(){
+  const box=document.getElementById("scheduleMini");
+  box.innerHTML="";
+
+  prayers.forEach((p,i)=>{
+    box.innerHTML+=`
+      <div class="schedule-row">
+        <span>${p.emoji} ${p.name}</span>
+        <strong>${p.time}</strong>
+      </div>`;
+  });
+}
+
+function renderSettings(){
+  const box=document.getElementById("scheduleSettings");
+  box.innerHTML="";
+
+  prayers.forEach((p,i)=>{
+    box.innerHTML+=`
+      <div class="schedule-row">
+        <span>${p.emoji} ${p.name}</span>
+        <input type="time" id="time${i}" value="${p.time}">
+      </div>`;
+  });
+}
+
+function saveSchedule(){
+  const times=prayers.map((p,i)=>document.getElementById("time"+i).value);
+
+  if(times.some(t=>!t)){
+    alert("Semua jadwal harus diisi.");
+    return;
+  }
+
+  prayers.forEach((p,i)=>p.time=times[i]);
+  localStorage.setItem("ibadah_times",JSON.stringify(times));
+
+  renderScheduleMini();
+  updateCountdown();
+  showToast("Jadwal berhasil disimpan 🌿");
+}
+
+function defaultSchedule(){
+  prayers.forEach((p,i)=>p.time=defaultTimes[i]);
+  localStorage.setItem("ibadah_times",JSON.stringify(defaultTimes));
+  renderSettings();
+  renderScheduleMini();
+  updateCountdown();
+  showToast("Jadwal default dipulihkan");
+}
+
+// ================= JOURNAL =================
+
+function saveJournal(){
+  const input=document.getElementById("journalInput");
+  const text=input.value.trim();
+
+  if(!text){
+    alert("Tulis refleksi terlebih dahulu ya 🌿");
+    return;
+  }
+
+  journals.unshift({
+    id:Date.now(),
+    date:todayKey(),
+    text:text
+  });
+
+  storeJournals();
+  input.value="";
+  renderRecentJournal();
+  showToast("Jurnal berhasil disimpan 🤍");
+}
+
+function renderRecentJournal(){
+  const box=document.getElementById("recentJournal");
+  const today=journals.filter(j=>j.date===todayKey());
+
+  box.innerHTML=today.length?"<h4>Catatan Hari Ini</h4>":"";
+
+  today.forEach(j=>{
+    box.innerHTML+=`
+      <div class="journal-item">
+        <small>${formatDate(j.date)}</small>
+        <p>${escapeHTML(j.text)}</p>
+      </div>`;
+  });
+}
+
+function renderAllJournals(){
+  const box=document.getElementById("allJournals");
+  box.innerHTML="";
+
+  if(!journals.length){
+    box.innerHTML="<p>Belum ada jurnal. Yuk tulis refleksi pertamamu! 🌱</p>";
+    return;
+  }
+
+  journals.forEach(j=>{
+    box.innerHTML+=`
+      <div class="journal-item">
+        <small>📅 ${formatDate(j.date)}</small>
+        <p>${escapeHTML(j.text)}</p>
+        <button onclick="deleteJournal(${j.id})">🗑 Hapus</button>
+      </div>`;
+  });
+}
+
+function deleteJournal(id){
+  if(confirm("Hapus catatan ini?")){
+    journals=journals.filter(j=>j.id!==id);
+    storeJournals();
+    renderAllJournals();
+    renderRecentJournal();
+  }
+}
+
+function formatDate(date){
+  return new Date(date+"T00:00:00").toLocaleDateString("id-ID",{
+    day:"numeric",month:"long",year:"numeric"
+  });
+}
+
+function escapeHTML(text){
+  return text.replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  })[c]);
+}
+
+// ================= TOAST =================
+
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.style.display="block";
+
+  setTimeout(()=>toast.style.display="none",3000);
+}
+
+// ================= INIT =================
+
+loadData();
+renderDate();
+renderPrayers();
+renderScheduleMini();
+renderRecentJournal();
+updateReminderSwitch();
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// Deteksi pergantian hari
+let lastDate=todayKey();
+setInterval(()=>{
+  if(lastDate!==todayKey()){
+    lastDate=todayKey();
+    prayerStatus={};
+    storeStatus();
+    renderDate();
+    renderPrayers();
+    renderRecentJournal();
+  }
+},30000);
+</script>
+
+</body>
+</html>
